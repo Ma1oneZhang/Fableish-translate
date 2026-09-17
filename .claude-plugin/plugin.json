@@ -1,0 +1,13 @@
+{
+  "name": "fable-zh",
+  "displayName": "Fable 中英互译",
+  "version": "0.2.0",
+  "description": "Automatically translates assistant replies to Chinese on screen (MessageDisplay) and injects English translations of Chinese prompts (UserPromptSubmit).",
+  "author": {
+    "name": "ziyang"
+  },
+  "keywords": ["translation", "chinese", "i18n", "deepseek"],
+  "homepage": "https://github.com/Ma1oneZhang/fable-zh",
+  "repository": "https://github.com/Ma1oneZhang/fable-zh",
+  "license": "MIT"
+}

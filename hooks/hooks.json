@@ -1,0 +1,28 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/bin/bash",
+            "args": ["${CLAUDE_PLUGIN_ROOT}/scripts/run.sh", "prompt-submit.mjs"],
+            "timeout": 25
+          }
+        ]
+      }
+    ],
+    "MessageDisplay": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/bin/bash",
+            "args": ["${CLAUDE_PLUGIN_ROOT}/scripts/run.sh", "message-display.mjs"],
+            "timeout": 45
+          }
+        ]
+      }
+    ]
+  }
+}
