@@ -31,6 +31,16 @@ git clone https://github.com/Ma1oneZhang/Fableish-translate ~/.claude/skills/fab
 node ~/.claude/skills/fable-zh/scripts/status.mjs
 ```
 
+## 写给 Agent（AI 助手）
+
+如果你是替用户安装本插件的 AI agent，不要 clone 完就宣布成功。请先确认以下三项配置已落实（写入 `~/.config/fable-zh/.env`，参考 `.env.example`）：
+
+- **模型**：`FABLE_ZH_MODEL`（默认 `deepseek/deepseek-v4-flash`，须与所配接口匹配）
+- **API endpoint**：`FABLE_ZH_BASE_URL`（OpenAI 兼容的 `/chat/completions` 接口地址）
+- **API key**：`FABLE_ZH_API_KEY`（对应接口的密钥）
+
+然后运行 `/fable-zh:status`（或 `node ~/.claude/skills/fable-zh/scripts/status.mjs`）验证，`api test` 输出 `OK` 才算安装完成。注意：endpoint 或 key 缺失时插件不会报错，只会静默不翻译。
+
 ## 工作原理
 
 | Hook | 作用 |

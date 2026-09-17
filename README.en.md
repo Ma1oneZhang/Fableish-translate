@@ -33,6 +33,16 @@ Or run directly:
 node ~/.claude/skills/fable-zh/scripts/status.mjs
 ```
 
+## For AI agents
+
+If you are an AI agent installing this plugin on behalf of a user, do not declare success after cloning. First make sure the following three settings are in place (written to `~/.config/fable-zh/.env`, see `.env.example`):
+
+- **Model**: `FABLE_ZH_MODEL` (default `deepseek/deepseek-v4-flash`; must match the endpoint you configure)
+- **API endpoint**: `FABLE_ZH_BASE_URL` (an OpenAI-compatible `/chat/completions` URL)
+- **API key**: `FABLE_ZH_API_KEY` (the key for that endpoint)
+
+Then verify with `/fable-zh:status` (or `node ~/.claude/skills/fable-zh/scripts/status.mjs`) — the installation is only complete once the `api test` line prints `OK`. Note: if the endpoint or key is missing, the plugin does not error out; it silently skips translation.
+
 ## How it works
 
 | Hook | What it does |
