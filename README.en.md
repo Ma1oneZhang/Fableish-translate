@@ -14,7 +14,7 @@ Translation uses DeepSeek by default (`deepseek/deepseek-v4-flash`); the endpoin
 Clone into Claude Code's skills directory (an officially supported skills-dir plugin — no marketplace or install step needed):
 
 ```bash
-git clone https://github.com/Ma1oneZhang/fable-zh ~/.claude/skills/fable-zh
+git clone https://github.com/Ma1oneZhang/Fableish-translate ~/.claude/skills/fable-zh
 ```
 
 Restart Claude Code (or run `/reload-plugins`) and the plugin takes effect automatically.

@@ -14,7 +14,7 @@ Claude Code 中英互译插件：
 克隆到 Claude Code 的 skills 目录（官方支持的 skills-dir 插件方式，无需 marketplace）：
 
 ```bash
-git clone https://github.com/Ma1oneZhang/fable-zh ~/.claude/skills/fable-zh
+git clone https://github.com/Ma1oneZhang/Fableish-translate ~/.claude/skills/fable-zh
 ```
 
 重启 Claude Code（或运行 `/reload-plugins`）后自动生效。也可以克隆到项目的 `.claude/skills/` 目录，仅在单个项目启用。
