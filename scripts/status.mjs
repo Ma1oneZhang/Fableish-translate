@@ -4,7 +4,7 @@ import { loadConfig, chat, envFilePath, dataRoot, OUT_SYSTEM } from './lib.mjs';
 const cfg = loadConfig();
 const mask = (key) => (key ? `${key.slice(0, 4)}...${key.slice(-4)}` : '(none)');
 
-console.log('fable-zh status');
+console.log('fableish-translate status');
 console.log('env file      :', envFilePath(), fs.existsSync(envFilePath()) ? '(found)' : '(not found)');
 console.log('enabled       :', cfg.enabled);
 console.log('input enabled :', cfg.inputEnabled);

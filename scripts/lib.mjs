@@ -5,7 +5,7 @@ import crypto from 'node:crypto';
 
 const HOME = os.homedir();
 
-export const VERSION = '0.2.0';
+export const VERSION = '0.3.0';
 export const DEFAULT_MODEL = 'deepseek/deepseek-v4-flash';
 
 export const IN_SYSTEM = [
@@ -31,13 +31,13 @@ export const OUT_SYSTEM = [
 
 export function dataRoot() {
   const env = process.env.CLAUDE_PLUGIN_DATA;
-  if (env && !env.includes('${') && path.basename(env).includes('fable-zh')) return env;
+  if (env && !env.includes('${') && path.basename(env).includes('fableish-translate')) return env;
   const xdg = process.env.XDG_CACHE_HOME;
-  return path.join(xdg || path.join(HOME, '.cache'), 'fable-zh');
+  return path.join(xdg || path.join(HOME, '.cache'), 'fableish-translate');
 }
 
 export function envFilePath() {
-  return process.env.FABLE_ZH_CONFIG || path.join(HOME, '.config', 'fable-zh', '.env');
+  return process.env.FABLEISH_TRANSLATE_CONFIG || path.join(HOME, '.config', 'fableish-translate', '.env');
 }
 
 function loadEnvFile(file) {
@@ -66,16 +66,16 @@ export function loadConfig() {
   loadEnvFile(envFilePath());
 
   return {
-    model: process.env.FABLE_ZH_MODEL || DEFAULT_MODEL,
-    baseURL: (process.env.FABLE_ZH_BASE_URL || '').replace(/\/+$/, ''),
-    apiKey: process.env.FABLE_ZH_API_KEY || '',
-    enabled: process.env.FABLE_ZH_ENABLED !== 'false' && process.env.FABLE_ZH_DISABLED !== '1',
-    inputEnabled: process.env.FABLE_ZH_INPUT_ENABLED !== 'false',
-    outputEnabled: process.env.FABLE_ZH_OUTPUT_ENABLED !== 'false',
-    maxInputChars: Number(process.env.FABLE_ZH_MAX_INPUT_CHARS) || 3000,
-    inputTimeoutMs: Number(process.env.FABLE_ZH_INPUT_TIMEOUT_MS) || 15000,
-    outputTimeoutMs: Number(process.env.FABLE_ZH_OUTPUT_TIMEOUT_MS) || 12000,
-    disableReasoning: process.env.FABLE_ZH_DISABLE_REASONING !== 'false',
+    model: process.env.FABLEISH_TRANSLATE_MODEL || DEFAULT_MODEL,
+    baseURL: (process.env.FABLEISH_TRANSLATE_BASE_URL || '').replace(/\/+$/, ''),
+    apiKey: process.env.FABLEISH_TRANSLATE_API_KEY || '',
+    enabled: process.env.FABLEISH_TRANSLATE_ENABLED !== 'false' && process.env.FABLEISH_TRANSLATE_DISABLED !== '1',
+    inputEnabled: process.env.FABLEISH_TRANSLATE_INPUT_ENABLED !== 'false',
+    outputEnabled: process.env.FABLEISH_TRANSLATE_OUTPUT_ENABLED !== 'false',
+    maxInputChars: Number(process.env.FABLEISH_TRANSLATE_MAX_INPUT_CHARS) || 3000,
+    inputTimeoutMs: Number(process.env.FABLEISH_TRANSLATE_INPUT_TIMEOUT_MS) || 15000,
+    outputTimeoutMs: Number(process.env.FABLEISH_TRANSLATE_OUTPUT_TIMEOUT_MS) || 12000,
+    disableReasoning: process.env.FABLEISH_TRANSLATE_DISABLE_REASONING !== 'false',
   };
 }
 
@@ -144,7 +144,7 @@ export function cacheSet(key, value) {
 
 export function debugLog(...args) {
   try {
-    const p = path.join(dataRoot(), 'fable-zh.log');
+    const p = path.join(dataRoot(), 'fableish-translate.log');
     fs.mkdirSync(path.dirname(p), { recursive: true });
     fs.appendFileSync(p, `[${new Date().toISOString()}] ${args.join(' ')}\n`);
   } catch {}

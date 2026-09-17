@@ -1,5 +1,5 @@
 ---
-description: 检查 fable-zh 中英互译插件的配置与 API 连通性
+description: 检查 fableish-translate 中英互译插件的配置与 API 连通性
 ---
 
 Run this command and show its output verbatim to the user:

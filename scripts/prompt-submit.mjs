@@ -24,7 +24,7 @@ translated = translated.trim();
 if (!translated || translated === prompt.trim()) process.exit(0);
 
 const context = [
-  '[fable-zh auto-translate] The user prompt was translated to English for processing. Treat the English version below as the authoritative request, and reply in English (the UI shows Chinese to the user).',
+  '[fableish-translate auto-translate] The user prompt was translated to English for processing. Treat the English version below as the authoritative request, and reply in English (the UI shows Chinese to the user).',
   '---',
   translated,
   '---',

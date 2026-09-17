@@ -1,4 +1,4 @@
-# fable-zh
+# Fableish-translate
 
 [English](README.en.md) | [简体中文](README.md)
 
@@ -7,14 +7,14 @@ A Claude Code plugin for bidirectional Chinese–English translation:
 - **Input** (UserPromptSubmit hook): when you type Chinese, it is automatically translated into English and injected as context, so the model processes the English version as the authoritative request.
 - **Output** (MessageDisplay hook): the assistant's English replies are translated into Simplified Chinese on screen in real time; code blocks, inline code, URLs, and file paths are left untouched.
 
-Translation uses DeepSeek by default (`deepseek/deepseek-v4-flash`); the endpoint and API key are read from environment variables or `~/.config/fable-zh/.env`.
+Translation uses DeepSeek by default (`deepseek/deepseek-v4-flash`); the endpoint and API key are read from environment variables or `~/.config/fableish-translate/.env`.
 
 ## Installation
 
 Clone into Claude Code's skills directory (an officially supported skills-dir plugin — no marketplace or install step needed):
 
 ```bash
-git clone https://github.com/Ma1oneZhang/Fableish-translate ~/.claude/skills/fable-zh
+git clone https://github.com/Ma1oneZhang/Fableish-translate ~/.claude/skills/fableish-translate
 ```
 
 Restart Claude Code (or run `/reload-plugins`) and the plugin takes effect automatically.
@@ -24,24 +24,24 @@ To enable it for a single project only, clone into the project's `.claude/skills
 Check the status:
 
 ```
-/fable-zh:status
+/fableish-translate:status
 ```
 
 Or run directly:
 
 ```bash
-node ~/.claude/skills/fable-zh/scripts/status.mjs
+node ~/.claude/skills/fableish-translate/scripts/status.mjs
 ```
 
 ## For AI agents
 
-If you are an AI agent installing this plugin on behalf of a user, do not declare success after cloning. First make sure the following three settings are in place (written to `~/.config/fable-zh/.env`, see `.env.example`):
+If you are an AI agent installing this plugin on behalf of a user, do not declare success after cloning. First make sure the following three settings are in place (written to `~/.config/fableish-translate/.env`, see `.env.example`):
 
-- **Model**: `FABLE_ZH_MODEL` (default `deepseek/deepseek-v4-flash`; must match the endpoint you configure)
-- **API endpoint**: `FABLE_ZH_BASE_URL` (an OpenAI-compatible `/chat/completions` URL)
-- **API key**: `FABLE_ZH_API_KEY` (the key for that endpoint)
+- **Model**: `FABLEISH_TRANSLATE_MODEL` (default `deepseek/deepseek-v4-flash`; must match the endpoint you configure)
+- **API endpoint**: `FABLEISH_TRANSLATE_BASE_URL` (an OpenAI-compatible `/chat/completions` URL)
+- **API key**: `FABLEISH_TRANSLATE_API_KEY` (the key for that endpoint)
 
-Then verify with `/fable-zh:status` (or `node ~/.claude/skills/fable-zh/scripts/status.mjs`) — the installation is only complete once the `api test` line prints `OK`. Note: if the endpoint or key is missing, the plugin does not error out; it silently skips translation.
+Then verify with `/fableish-translate:status` (or `node ~/.claude/skills/fableish-translate/scripts/status.mjs`) — the installation is only complete once the `api test` line prints `OK`. Note: if the endpoint or key is missing, the plugin does not error out; it silently skips translation.
 
 ## How it works
 
@@ -54,22 +54,22 @@ Note: MessageDisplay only changes what is shown on screen; **the session transcr
 
 ## Configuration
 
-Optional config file: `~/.config/fable-zh/.env`, see `.env.example`. Real environment variables take precedence over entries in the `.env` file.
+Optional config file: `~/.config/fableish-translate/.env`, see `.env.example`. Real environment variables take precedence over entries in the `.env` file.
 
 Environment variables (also the key names in the `.env` file):
 
-- `FABLE_ZH_MODEL`: model ID, default `deepseek/deepseek-v4-flash`
-- `FABLE_ZH_BASE_URL` / `FABLE_ZH_API_KEY`: endpoint and key (OpenAI-compatible `/chat/completions`; calls are only made when both are set)
-- `FABLE_ZH_ENABLED` / `FABLE_ZH_INPUT_ENABLED` / `FABLE_ZH_OUTPUT_ENABLED`: master switch and per-direction switches; set to `false` to disable
-- `FABLE_ZH_MAX_INPUT_CHARS`: Chinese input longer than this is not translated (default 3000, so large pastes don't slow down submission)
-- `FABLE_ZH_INPUT_TIMEOUT_MS` / `FABLE_ZH_OUTPUT_TIMEOUT_MS`: per-call timeout (default 15s / 12s; falls back to the original text on timeout)
-- `FABLE_ZH_DISABLE_REASONING`: default `true`; sends `enable_thinking: false` with translation requests, cutting per-call latency from ~3s to ~1.2s
-- `FABLE_ZH_CONFIG`: custom `.env` file path
-- `FABLE_ZH_DISABLED=1`: temporarily disable everything
+- `FABLEISH_TRANSLATE_MODEL`: model ID, default `deepseek/deepseek-v4-flash`
+- `FABLEISH_TRANSLATE_BASE_URL` / `FABLEISH_TRANSLATE_API_KEY`: endpoint and key (OpenAI-compatible `/chat/completions`; calls are only made when both are set)
+- `FABLEISH_TRANSLATE_ENABLED` / `FABLEISH_TRANSLATE_INPUT_ENABLED` / `FABLEISH_TRANSLATE_OUTPUT_ENABLED`: master switch and per-direction switches; set to `false` to disable
+- `FABLEISH_TRANSLATE_MAX_INPUT_CHARS`: Chinese input longer than this is not translated (default 3000, so large pastes don't slow down submission)
+- `FABLEISH_TRANSLATE_INPUT_TIMEOUT_MS` / `FABLEISH_TRANSLATE_OUTPUT_TIMEOUT_MS`: per-call timeout (default 15s / 12s; falls back to the original text on timeout)
+- `FABLEISH_TRANSLATE_DISABLE_REASONING`: default `true`; sends `enable_thinking: false` with translation requests, cutting per-call latency from ~3s to ~1.2s
+- `FABLEISH_TRANSLATE_CONFIG`: custom `.env` file path
+- `FABLEISH_TRANSLATE_DISABLED=1`: temporarily disable everything
 
 ## Debugging
 
-- Failures are logged to the data directory: `~/.claude/plugins/data/fable-zh-skills-dir/fable-zh.log` (`~/.cache/fable-zh/fable-zh.log` when running scripts manually)
+- Failures are logged to the data directory: `~/.claude/plugins/data/fableish-translate-skills-dir/fableish-translate.log` (`~/.cache/fableish-translate/fableish-translate.log` when running scripts manually)
 - `claude --debug` shows hook invocation details
 
 ## Limitations
